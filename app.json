@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Athenea-frontend",
-    "slug": "Athenea-frontend",
+    "name": "useTeam-Athenea",
+    "slug": "useteam-athenea",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -13,9 +13,11 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
+      "bundleIdentifier": "com.useteam.athenea",
       "supportsTablet": true
     },
     "android": {
+      "package": "com.useteam.athenea",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -24,6 +26,15 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-router"
+    ],
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "d0145a5a-2764-462f-a46b-d9cff4ddb5f8"
+      }
     }
   }
 }

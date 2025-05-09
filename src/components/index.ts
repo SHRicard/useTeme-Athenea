@@ -1,0 +1,52 @@
+import {
+    BtnTheme,
+    Label,
+    Divider,
+    SelectField,
+    FontAwesomeIcon,
+    TextField,
+    DateWebField,
+} from "./atoms"
+import { PublicRoute, PrivateRoute, CustomTabs, HeaderApp } from "./organisms";
+
+import {
+    TempleSignin,
+    TempleSignup,
+    TempleLanding,
+    ////Temple User////
+    TempleDashboardUser,
+    TempleFavoritesUser,
+    TempleNotificationsUser,
+    TemplePlansUser,
+    ////Temple Admin////
+    TempleDashboardAdmin,
+    TempleProfile
+} from "./templates";
+
+
+
+export {
+    BtnTheme,
+    PublicRoute,
+    PrivateRoute,
+    TempleSignin,
+    TempleLanding,
+    TempleSignup,
+    CustomTabs,
+    Label,
+    FontAwesomeIcon,
+    Divider,
+    SelectField,
+    TextField,
+    DateWebField,
+    HeaderApp,
+
+    TempleProfile,
+    ////Temple User////
+    TempleDashboardUser,
+    TempleFavoritesUser,
+    TempleNotificationsUser,
+    TemplePlansUser,
+    ////Temple Admin////
+    TempleDashboardAdmin
+}
