@@ -21,14 +21,14 @@ export const TempleFavoritesUser = () => {
     };
 
     const flightFavorites = favorites.filter((item): item is Flight => 'airline' in item);
-    const lodgingFavorites = favorites.filter((item): item is Lodging => 
-        'name' in item && 
-        'type' in item && 
+    const lodgingFavorites = favorites.filter((item): item is Lodging =>
+        'name' in item &&
+        'type' in item &&
         item.type === 'Alojamiento'
     );
 
     const currentFavorites = activeService === 'flights' ? flightFavorites : lodgingFavorites;
-    const emptyMessage = activeService === 'flights' 
+    const emptyMessage = activeService === 'flights'
         ? 'No tienes vuelos favoritos'
         : 'No tienes alojamientos favoritos';
 
@@ -58,12 +58,12 @@ export const TempleFavoritesUser = () => {
                         {activeService === 'flights' ? 'Vuelos Favoritos' : 'Alojamientos Favoritos'}
                     </Text>
                 </View>
-                
+
                 <View style={styles.cardsContainer}>
                     {activeService === 'flights' ? (
                         flightFavorites.map((flight) => (
-                            <View 
-                                key={flight.id} 
+                            <View
+                                key={flight.id}
                                 style={[
                                     styles.cardWrapper,
                                     { width: getCardWidth() }
@@ -73,14 +73,13 @@ export const TempleFavoritesUser = () => {
                                     flightInfo={flight}
                                     isFavorite={true}
                                     onAddToFavorites={() => removeFavorite(flight.id)}
-                                    onAddToCart={() => console.log('Añadido al carrito')}
                                 />
                             </View>
                         ))
                     ) : (
                         lodgingFavorites.map((lodging) => (
-                            <View 
-                                key={lodging.id} 
+                            <View
+                                key={lodging.id}
                                 style={[
                                     styles.cardWrapper,
                                     { width: getCardWidth() }

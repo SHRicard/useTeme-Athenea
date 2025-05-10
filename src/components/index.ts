@@ -14,13 +14,14 @@ import {
     TempleSignup,
     TempleLanding,
     ////Temple User////
-    TempleDashboardUser,
+    // TempleDashboardUser,
     TempleFavoritesUser,
     TempleNotificationsUser,
     TemplePlansUser,
     ////Temple Admin////
     TempleDashboardAdmin,
-    TempleProfile
+    TempleProfile,
+    TempleApp
 } from "./templates";
 
 
@@ -43,10 +44,11 @@ export {
 
     TempleProfile,
     ////Temple User////
-    TempleDashboardUser,
+    // TempleDashboardUser,
     TempleFavoritesUser,
     TempleNotificationsUser,
     TemplePlansUser,
     ////Temple Admin////
-    TempleDashboardAdmin
+    TempleDashboardAdmin,
+    TempleApp
 }

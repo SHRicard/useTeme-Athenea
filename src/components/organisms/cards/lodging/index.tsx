@@ -51,8 +51,6 @@ export const LodgingCard: React.FC<LodgingCardProps> = ({
 
   const handleMapButtonPress = () => {
 
-    console.log("ubicacion en el mapa");
-
   };
 
   const handleFavoritePress = () => {
@@ -190,7 +188,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 4,
-     textAlign: 'right',
+    textAlign: 'right',
   },
   cardFooter: {
     borderTopWidth: 0,
@@ -215,12 +213,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
- // locationContainer: {
- //   flexDirection: 'row',
-   // alignItems: 'center',
- //   gap: 6,
-   // flex: 1,
- // },
+  // locationContainer: {
+  //   flexDirection: 'row',
+  // alignItems: 'center',
+  //   gap: 6,
+  // flex: 1,
+  // },
   actionsContainer: {
     flexDirection: "row",
     alignItems: "center",

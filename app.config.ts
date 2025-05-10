@@ -29,13 +29,14 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         package: "com.useteam.athenea"
     },
     web: {
-        favicon: "./assets/favicon.png"
+        favicon: "src/assets/images/LOGO_ATENEA.png"
     },
-    plugins: ["expo-router"],
+    plugins: ["expo-router", "expo-secure-store",],
     extra: {
         ANDROID_ID: process.env.EXPO_PUBLIC_ANDROID_ID,
         WEB_ID: process.env.EXPO_PUBLIC_WEB_ID,
-        REDIRECT_URI: process.env.EXPO_PUBLIC_REDIRECT_URI,
+        REDIRECT_URI_ANDROID: process.env.EXPO_PUBLIC_REDIRECT_URI_ANDROID,
+        REDIRECT_URI_WEB: process.env.EXPO_PUBLIC_REDIRECT_URI_WEB,
         API_URL_BACK: process.env.EXPO_PUBLIC_API_URL_BACK,
         DESARROLLAR_ANDROID: process.env.EXPO_PUBLIC_DESARROLLAR_ANDROID,
         PROJECT_ID: process.env.PROJECT_ID,

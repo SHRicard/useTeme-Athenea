@@ -23,7 +23,6 @@ export const Pagination: React.FC<PaginationProps> = ({
         key={1}
         style={[styles.pageButton, currentPage === 1 && styles.activePageButton]}
         onPress={() => {
-          console.log('Esta es la página 1');
           onPageChange?.(1);
         }}
       >
@@ -53,7 +52,6 @@ export const Pagination: React.FC<PaginationProps> = ({
           key={i}
           style={[styles.pageButton, currentPage === i && styles.activePageButton]}
           onPress={() => {
-            console.log(`Esta es la página ${i}`);
             onPageChange?.(i);
           }}
         >
@@ -77,7 +75,6 @@ export const Pagination: React.FC<PaginationProps> = ({
           key={totalPages}
           style={[styles.pageButton, currentPage === totalPages && styles.activePageButton]}
           onPress={() => {
-            console.log(`Esta es la página ${totalPages}`);
             onPageChange?.(totalPages);
           }}
         >
@@ -96,10 +93,9 @@ export const Pagination: React.FC<PaginationProps> = ({
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity 
+      <TouchableOpacity
         style={styles.arrowButton}
         onPress={() => {
-          console.log('Yendo a la primera página');
           onPageChange?.(1);
         }}
         disabled={currentPage <= 1}
@@ -115,10 +111,9 @@ export const Pagination: React.FC<PaginationProps> = ({
         {renderPageNumbers()}
       </View>
 
-      <TouchableOpacity 
+      <TouchableOpacity
         style={styles.arrowButton}
         onPress={() => {
-          console.log('Yendo a la última página');
           onPageChange?.(totalPages);
         }}
         disabled={currentPage >= totalPages}

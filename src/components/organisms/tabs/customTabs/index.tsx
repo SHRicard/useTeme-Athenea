@@ -24,7 +24,7 @@ export const CustomTabs = ({
                 },
                 tabBarStyle: {
                     borderTopWidth: 0.8,
-                    backgroundColor: theme.colors.background,
+                    backgroundColor: theme.colors.primary,
                     width: largeScreen ? maxWidth : "100%",
                     marginHorizontal: largeScreen ? "auto" : 0,
                 },

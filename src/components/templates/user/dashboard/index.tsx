@@ -5,12 +5,11 @@ import {
   ScrollView,
   useWindowDimensions,
 } from "react-native";
-import { TransportCard, LodgingCard } from "@/components/organisms/cards";
-import { ButtonIcon, Pagination, ServiceSwitch } from "@/components/atoms";
-import { router } from "expo-router";
-import { useAuthStore, useFavoritesStore } from "@/store";
+import { LodgingCard } from "@/components/organisms/cards";
+import { Pagination, ServiceSwitch } from "@/components/atoms";
 import { mockLodgings } from "@/components/organisms/cards/lodging";
 import { TemplateFlightDetail } from "../../flightDetail";
+import { useFavoritesStore } from "../../../../store";
 
 
 const mockFlights = Array(8)
@@ -59,7 +58,6 @@ export const TemplateDashboardUser = () => {
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
-    console.log(`Cambiando a la página ${page}`);
   };
 
   const handleFavoriteToggle = (flight: any) => {
@@ -73,30 +71,30 @@ export const TemplateDashboardUser = () => {
 
 
   //const handleServiceChange = (service: "flights" | "lodging") => {
-   // setActiveService(service);
- //   setCurrentPage(1);
-//  };
+  // setActiveService(service);
+  //   setCurrentPage(1);
+  //  };
 
-//  return (
+  //  return (
   //  <ScrollView style={styles.container}>
   //    <View style={styles.cardsContainer}>
-    //    {mockFlights.map((flight) => (
-    //      <View
-     //       key={flight.id}
-     //       style={[
-     //         styles.cardWrapper,
-      //       { width: getCardWidth() }
-        //    ]}
-       //   >
-      //      <TransportCard
-      //        flightInfo={flight}
-     //         isFavorite={isFavorite(flight.id)}
-        //      onAddToFavorites={() => handleFavoriteToggle(flight)}
-        //      onAddToCart={() => console.log('Añadido al carrito')}
-        //    />
-       //   </View>
-    //    ))}
-    //  </View>
+  //    {mockFlights.map((flight) => (
+  //      <View
+  //       key={flight.id}
+  //       style={[
+  //         styles.cardWrapper,
+  //       { width: getCardWidth() }
+  //    ]}
+  //   >
+  //      <TransportCard
+  //        flightInfo={flight}
+  //         isFavorite={isFavorite(flight.id)}
+  //      onAddToFavorites={() => handleFavoriteToggle(flight)}
+  //      onAddToCart={() => console.log('Añadido al carrito')}
+  //    />
+  //   </View>
+  //    ))}
+  //  </View>
 
 
   const handleServiceChange = (service: 'flights' | 'lodging') => {
@@ -114,13 +112,13 @@ export const TemplateDashboardUser = () => {
 
       <ScrollView style={styles.scrollContent}>
         <View style={styles.cardsContainer}>
-         {activeService === "flights" &&
+          {activeService === "flights" &&
             mockFlights.map((flight) => (
               <View
                 key={flight.id}
                 style={[styles.cardWrapper, { width: getCardWidth() }]}
               >
-              {/* <TransportCard
+                {/* <TransportCard
                   flightInfo={flight}
                   isFavorite={isFavorite(flight.id)}
                   onAddToFavorites={() => handleFavoriteToggle(flight)}
