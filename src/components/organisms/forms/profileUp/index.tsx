@@ -42,7 +42,6 @@ export const FromProfile = () => {
     const avatarValue = watch("avatar");
 
     const submit = (data: any) => {
-        console.log("Datos del formulario:", data);
         // Aquí podrías hacer un update al store o API
     };
 

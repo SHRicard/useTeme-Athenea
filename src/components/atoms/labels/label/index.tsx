@@ -11,14 +11,14 @@ type LabelProps = {
   style?: StyleProp<RNTextStyle>;
 };
 
-export const Label: React.FC<LabelProps> = ({
+export const Label = ({
   text,
   type = 'secondary',
   size = 14,
   color,
   disabled = false,
   style,
-}) => {
+}: LabelProps) => {
   const theme = useAppTheme();
 
   const textStyle: TextStyle = {

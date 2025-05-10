@@ -1,6 +1,7 @@
-import { Redirect } from "expo-router";
-import { View, StyleSheet } from "react-native";
-import { useUserStore } from "@/store";
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
+import { useUserStore } from '@/store';
+import { Redirect } from 'expo-router';
 
 interface PrivateRouteProps {
     children: React.ReactNode;
@@ -8,16 +9,11 @@ interface PrivateRouteProps {
 
 export const PrivateRoute = ({ children }: PrivateRouteProps) => {
     const { user } = useUserStore();
-
     if (!user) {
-        return <Redirect href="/landing" />;
+        return <Redirect href="/signin" />;
     }
 
-    return (
-        <View style={styles.container}>
-            {children}
-        </View>
-    );
+    return <View style={styles.container}>{children}</View>;
 };
 
 const styles = StyleSheet.create({

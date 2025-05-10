@@ -1,18 +1,34 @@
 import { router, Tabs } from "expo-router";
 import { CustomTabs, FontAwesomeIcon, HeaderApp, Label } from "@/components";
 import { useAppTheme } from "@/hooks";
-import { View } from "react-native";
+import { useWindowDimensions, View } from "react-native";
 
 export default function TabLayout() {
     const theme = useAppTheme();
+    const { width: screenWidth } = useWindowDimensions();
 
+    const maxWidth = 2000;
+    const largeScreen = screenWidth >= maxWidth;
     return (
-        <CustomTabs>
+        <Tabs
+            screenOptions={{
+                headerStyle: {
+                    height: 70
+                },
+                tabBarStyle: {
+                    borderTopWidth: 0.8,
+                    backgroundColor: theme.colors.primary,
+                    width: largeScreen ? maxWidth : "100%",
+                    marginHorizontal: largeScreen ? "auto" : 0,
+                },
+
+            }}
+        >
             <Tabs.Screen
                 name="dashboard/index"
                 options={{
                     tabBarActiveTintColor: theme.colors.primary,
-                    tabBarInactiveTintColor: "red",
+                    tabBarInactiveTintColor: theme.colors.textOnPrimary,
                     tabBarIcon: () => (
                         <View style={{ alignItems: "center", minWidth: 60 }}>
                             <FontAwesomeIcon
@@ -138,6 +154,6 @@ export default function TabLayout() {
                     title: "",
                 }}
             />
-        </CustomTabs>
+        </Tabs>
     );
 }

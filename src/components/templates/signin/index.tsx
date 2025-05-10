@@ -1,105 +1,52 @@
-// import React, { useState } from 'react';
-// import { ScrollView, View, StyleSheet, Image } from 'react-native';
-// import { useUserStore } from '@/store';
-// import { Avatar, BtnGoogle, Label, Loading } from '../../atoms';
-// import { useAppTheme } from '@/hooks';
-// import { processGoogleToken } from '@/services';
-
-// export const TempleSignin = () => {
-//     const { setUser } = useUserStore();
-//     const [loading, setLoading] = useState(false);
-//     const theme = useAppTheme()
-//     const handleGoogleAuth = async (token: string) => {
-//         try {
-//             setLoading(true);
-//             const { user: userData } = await processGoogleToken(token);
-
-//             const storeUser = {
-//                 id: userData.id,
-//                 email: userData.email,
-//                 name: userData.name,
-//                 lastName: userData.surname,
-//                 nationality: "Mexicana",
-//                 gender: "Masculino",
-//                 phone: "+52 123 456 7890",
-//                 avatar: userData.avatar,
-//                 role: userData.role
-//             };
-
-//             setUser(storeUser);
-//         } catch (error) {
-//             console.error("Error al procesar token de Google:", error);
-//         } finally {
-//             setLoading(false);
-//         }
-//     };
-
-//     return (
-//         <ScrollView
-//             contentContainerStyle={[
-//                 styles.scrollContainer,
-//                 { backgroundColor: theme.colors.backgroundColorPrimary },
-//             ]}
-//             keyboardShouldPersistTaps="handled"
-//         >
-//             <View style={styles.innerContainer}>
-//                 <Image
-//                     source={require('../../../assets/images/LOGO_ATENEA.png')}
-//                     style={styles.logo}
-//                     resizeMode="contain"
-//                 />
-
-//                 <View style={styles.textContainer}>
-//                     <Label text="Te damos la bienvenida a Atenea" />
-//                     <Label text="Tu acceso comienza con Google. Así de simple." />
-//                 </View>
-
-//                 <View style={styles.buttonContainer}>
-//                     {loading ? <Loading /> : <BtnGoogle onSuccess={handleGoogleAuth} />}
-//                 </View>
-//             </View>
-//         </ScrollView>
-//     );
-
-// };
-// const styles = StyleSheet.create({
-//     scrollContainer: {
-//         flexGrow: 1,
-//         justifyContent: 'flex-start',
-//         paddingHorizontal: 24,
-//     },
-//     innerContainer: {
-//         alignItems: 'center',
-//         width: '100%',
-//     },
-//     logo: {
-//         width: 180,
-//         height: 180,
-//         marginBottom: 32,
-//     },
-//     textContainer: {
-//         alignItems: 'center',
-//         gap: 8,
-//         marginBottom: 32,
-//     },
-//     buttonContainer: {
-//         width: '100%',
-//         alignItems: 'center',
-//     },
-// });
-import React, { useState } from 'react';
-import { ScrollView, View, StyleSheet, Image } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { ScrollView, View, StyleSheet, Image, } from 'react-native';
 import { useUserStore } from '@/store';
 import { BtnGoogle, Loading, Label } from '../../atoms';
 import { useAppTheme } from '@/hooks';
 import { processGoogleToken } from '@/services';
+import { Redirect } from 'expo-router';
+import { APP_ROUTES } from '../../../navigation';
+import { useRouter } from 'expo-router'; // o 'next/router'
 
-export default function TempleSignin() {
-    const { setUser } = useUserStore();
+
+export const TempleSignin = () => {
+    const { setUser, hydrate, user } = useUserStore();
     const [loading, setLoading] = useState(false);
     const theme = useAppTheme();
-    console.log("TempleSignin is rendered");
+    const router = useRouter();
+
+    useEffect(() => {
+        hydrate();
+    }, [])
+
+    // const handleGoogleAuth = async (token: string) => {
+    //     try {
+    //         setLoading(true);
+    //         const { user: userData } = await processGoogleToken(token);
+
+    //         const storeUser = {
+    //             id: userData.id,
+    //             email: userData.email,
+    //             name: userData.name,
+    //             lastName: userData.surname,
+    //             nationality: "Mexicana",
+    //             gender: "Masculino",
+    //             phone: "+52 123 456 7890",
+    //             avatar: userData.avatar,
+    //             role: userData.role
+    //         };
+    //         setUser(storeUser);
+    //         const href = APP_ROUTES.PRIVATE.DASHBOARD[userData.role as keyof typeof APP_ROUTES.PRIVATE.DASHBOARD];
+
+    //     } catch (error) {
+    //         console.error("Error al procesar token de Google:", error);
+    //     } finally {
+    //         setLoading(false);
+    //     }
+    // };
+
     const handleGoogleAuth = async (token: string) => {
+
         try {
             setLoading(true);
             const { user: userData } = await processGoogleToken(token);
@@ -115,14 +62,20 @@ export default function TempleSignin() {
                 avatar: userData.avatar,
                 role: userData.role
             };
-
+            console.log({ user, token })
             setUser(storeUser);
+
+            const href = APP_ROUTES.PRIVATE.DASHBOARD[userData.role as keyof typeof APP_ROUTES.PRIVATE.DASHBOARD];
+            router.push(href); // ⬅️ Redirección aquí
+
         } catch (error) {
             console.error("Error al procesar token de Google:", error);
         } finally {
             setLoading(false);
         }
     };
+
+
 
     return (
         <ScrollView
@@ -133,14 +86,11 @@ export default function TempleSignin() {
             keyboardShouldPersistTaps="handled"
         >
             <View style={[styles.card, { backgroundColor: "#1B4B66" }]}>
-                {/* Logo */}
                 <Image
                     source={require('../../../assets/images/LOGO_ATENEA.png')}
                     style={styles.logo}
                     resizeMode="contain"
                 />
-
-                {/* Textos */}
                 <View style={styles.textContainer}>
                     <Label
                         text="Bienvenido a Atenea"
@@ -156,8 +106,6 @@ export default function TempleSignin() {
                         color={theme.colors.textOnPrimary}
                         style={styles.subtitle}
                     />
-
-                    {/* Nuevo mensaje de experiencia */}
                     <View style={styles.featureContainer}>
                         <Label
                             text="✓ En Atenea mejoramos tu experiencia"
@@ -185,13 +133,9 @@ export default function TempleSignin() {
                         />
                     </View>
                 </View>
-
-                {/* Botón */}
                 <View style={styles.buttonContainer}>
                     {loading ? <Loading /> : <BtnGoogle onSuccess={handleGoogleAuth} />}
                 </View>
-
-                {/* Footer */}
                 <Label
                     text="Al continuar aceptas nuestros Términos y Política de Privacidad"
                     size={12}
@@ -199,7 +143,7 @@ export default function TempleSignin() {
                     style={styles.footerText}
                 />
             </View>
-        </ScrollView>
+        </ScrollView >
     );
 };
 
@@ -263,3 +207,5 @@ const styles = StyleSheet.create({
         opacity: 0.7,
     },
 });
+
+

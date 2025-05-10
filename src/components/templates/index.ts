@@ -1,5 +1,5 @@
 import {
-    TempleDashboardUser,
+    // TempleDashboardUser,
     TempleFavoritesUser,
     TempleNotificationsUser,
     TemplePlansUser
@@ -12,6 +12,7 @@ import { TempleLanding } from "./Landing"
 import { TempleProfile } from "./profile"
 import { TempleSignin } from "./signin"
 import { TempleSignup } from "./signup"
+import { TempleApp } from "./TempleApp"
 
 
 
@@ -23,10 +24,11 @@ export {
     TempleLanding,
     TempleProfile,
     /////////Temple Users/////////
-    TempleDashboardUser,
+    // TempleDashboardUser,
     TempleFavoritesUser,
     TempleNotificationsUser,
     TemplePlansUser,
     ////////Temple Admin///////////////
-    TempleDashboardAdmin
+    TempleDashboardAdmin,
+    TempleApp
 }
