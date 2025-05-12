@@ -11,7 +11,6 @@ import { PublicRoute, PrivateRoute, CustomTabs, HeaderApp } from "./organisms";
 
 import {
     TempleSignin,
-    TempleSignup,
     TempleLanding,
     ////Temple User////
     // TempleDashboardUser,
@@ -32,7 +31,6 @@ export {
     PrivateRoute,
     TempleSignin,
     TempleLanding,
-    TempleSignup,
     CustomTabs,
     Label,
     FontAwesomeIcon,

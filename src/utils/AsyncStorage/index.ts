@@ -16,6 +16,18 @@ export const storeTokens = async (
     }
 };
 
+// Almacenar code en AsyncStorage
+export const storeCode = async (
+    accessCode: string,
+): Promise<boolean> => {
+    try {
+        await AsyncStorage.setItem("accessCode", accessCode);
+        return true;
+    } catch (error) {
+        console.error("Error al guardar tokens:", error);
+        return false;
+    }
+};
 
 // Obtener los tokens de 
 export const getTokens = async () => {

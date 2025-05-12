@@ -3,8 +3,8 @@ import { Platform } from "react-native";
 import Constants from 'expo-constants';
 import { getTokens, removeTokens, storeTokens } from "@/utils";
 
-const { API_URL_BACK, API_URL_ANDROID } = Constants.expoConfig?.extra || {};
-const API_URL = Platform.OS === 'android' ? API_URL_ANDROID : API_URL_BACK;
+const { API_URL_BACK } = Constants.expoConfig?.extra || {};
+const API_URL = API_URL_BACK;
 export const apiClient = axios.create({
     baseURL: API_URL,
     timeout: 15000,

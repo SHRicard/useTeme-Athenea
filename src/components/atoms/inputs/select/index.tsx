@@ -10,7 +10,6 @@ import {
 } from "react-native";
 import { useAppTheme } from "@/hooks";
 import { Label } from "../../labels";
-import Flag from 'react-world-flags';
 import { usePlatform } from "@/hooks";
 import { Divider } from "react-native-paper";
 
@@ -69,7 +68,6 @@ export const SelectField = ({
                                         {
                                             platform === true ? (
                                                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                                    <Flag code={item.code.toUpperCase()} style={{ ...styles.flag, width: 30, height: 20 }} />
                                                     <Label text={"- "} style={{ marginHorizontal: 1 }} />
                                                     <Label text={item.value} />
                                                 </View>
