@@ -10,7 +10,7 @@ import { useRouter } from 'expo-router'; // o 'next/router'
 
 
 export const TempleSignin = () => {
-    const { setUser, hydrate, user } = useUserStore();
+    const { setUser, hydrate } = useUserStore();
     const [loading, setLoading] = useState(false);
     const theme = useAppTheme();
     const router = useRouter();
@@ -18,32 +18,6 @@ export const TempleSignin = () => {
     useEffect(() => {
         hydrate();
     }, [])
-
-    // const handleGoogleAuth = async (token: string) => {
-    //     try {
-    //         setLoading(true);
-    //         const { user: userData } = await processGoogleToken(token);
-
-    //         const storeUser = {
-    //             id: userData.id,
-    //             email: userData.email,
-    //             name: userData.name,
-    //             lastName: userData.surname,
-    //             nationality: "Mexicana",
-    //             gender: "Masculino",
-    //             phone: "+52 123 456 7890",
-    //             avatar: userData.avatar,
-    //             role: userData.role
-    //         };
-    //         setUser(storeUser);
-    //         const href = APP_ROUTES.PRIVATE.DASHBOARD[userData.role as keyof typeof APP_ROUTES.PRIVATE.DASHBOARD];
-
-    //     } catch (error) {
-    //         console.error("Error al procesar token de Google:", error);
-    //     } finally {
-    //         setLoading(false);
-    //     }
-    // };
 
     const handleGoogleAuth = async (token: string) => {
 
@@ -62,11 +36,10 @@ export const TempleSignin = () => {
                 avatar: userData.avatar,
                 role: userData.role
             };
-            console.log({ user, token })
             setUser(storeUser);
 
             const href = APP_ROUTES.PRIVATE.DASHBOARD[userData.role as keyof typeof APP_ROUTES.PRIVATE.DASHBOARD];
-            router.push(href); // ⬅️ Redirección aquí
+            router.push(href);
 
         } catch (error) {
             console.error("Error al procesar token de Google:", error);
@@ -134,7 +107,7 @@ export const TempleSignin = () => {
                     </View>
                 </View>
                 <View style={styles.buttonContainer}>
-                    {loading ? <Loading /> : <BtnGoogle onSuccess={handleGoogleAuth} />}
+                    {loading ? <Loading /> : <BtnGoogle onWebSuccess={handleGoogleAuth} />}
                 </View>
                 <Label
                     text="Al continuar aceptas nuestros Términos y Política de Privacidad"

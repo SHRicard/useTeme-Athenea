@@ -38,7 +38,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         REDIRECT_URI_ANDROID: process.env.EXPO_PUBLIC_REDIRECT_URI_ANDROID,
         REDIRECT_URI_WEB: process.env.EXPO_PUBLIC_REDIRECT_URI_WEB,
         API_URL_BACK: process.env.EXPO_PUBLIC_API_URL_BACK,
-        DESARROLLAR_ANDROID: process.env.EXPO_PUBLIC_DESARROLLAR_ANDROID,
         PROJECT_ID: process.env.PROJECT_ID,
         eas: {
             projectId: "d0145a5a-2764-462f-a46b-d9cff4ddb5f8"

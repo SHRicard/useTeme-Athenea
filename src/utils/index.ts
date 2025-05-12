@@ -1,4 +1,4 @@
-import { getTokens, removeTokens, storeTokens } from "./AsyncStorage";
+import { getTokens, removeTokens, storeCode, storeTokens } from "./AsyncStorage";
 import { formatDate, formatDateWeb, fullDateTime } from "./date";
 import { countryOptions } from "./filterCountry";
 
@@ -12,5 +12,6 @@ export {
     countryOptions,
     storeTokens,
     getTokens,
-    removeTokens
+    removeTokens,
+    storeCode
 }
